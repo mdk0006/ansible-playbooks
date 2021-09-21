@@ -1,0 +1,12 @@
+---
+- name: For Installing Packages On Remote Machines
+  hosts: db
+  become: true
+  gather_facts: no
+  tasks:
+    -
+      name: installing package
+      yum:
+        name: ['httpd', 'git' , 'tree']
+        state: present
+    

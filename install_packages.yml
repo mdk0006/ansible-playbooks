@@ -1,0 +1,18 @@
+---
+- name: For Installing Packages On Remote Machines
+  hosts: db
+  become: true
+  gather_facts: no
+  tasks:
+    -
+      name: installing package
+      yum:
+        name: httpd
+        state: present
+      notify: Start the httpd
+    
+  handlers:
+    - name: Start the httpd
+      service:
+        name: httpd
+        state: started

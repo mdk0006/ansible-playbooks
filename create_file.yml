@@ -1,0 +1,16 @@
+---
+- name: This playbook creates directory
+  hosts: all
+  become: false
+  gather_facts: no
+  tasks:
+    -
+      name: Making a directory
+      file:
+        path: /home/ansible/jwarton
+        state: directory 
+    -
+      name: File creation
+      file:
+        path: /home/ansible/mdk
+        state: touch

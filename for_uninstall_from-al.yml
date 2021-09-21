@@ -1,0 +1,17 @@
+---
+- name: For Installing Packages On Remote Machines
+  hosts: db
+  become: true
+  gather_facts: no
+  tasks:
+    -
+      name: Stop the httpd
+      service:
+        name: httpd
+        state: stopped
+    -
+      name: uninstalling package
+      yum:
+        name: httpd
+        state: absent
+      
